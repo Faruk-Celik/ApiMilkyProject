@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MilkyProject.WebUI.Dtos;
+using MilkyProject.WebUI.Dtos.CategoryDtos;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace MilkyProject.WebUI.Controllers
 {
@@ -26,5 +28,24 @@ namespace MilkyProject.WebUI.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public IActionResult CreateCategory ()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateCategory ( CreateCategoryDto createCategoryDto )
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsondata = JsonConvert.SerializeObject(createCategoryDto);
+            StringContent stringContent = new StringContent(jsondata, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:7202/api/Category", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
     }
 }
