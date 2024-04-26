@@ -1,15 +1,19 @@
-﻿@model MilkyProject.WebUI.Dtos.CategoryDtos.CreateCategoryDto
+﻿@model MilkyProject.WebUI.Dtos.CategoryDtos.UpdateCategoryDto
 @{
     Layout = null;
 }
+
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 <form method="post">
     <div class="container">
         <br /><br />
+        <label>Kategori Id</label>
+        <input type="text" asp-for="categoryId" readonly class="form-control" />
+        <br />
         <label>Kategori Adı</label>
         <input type="text" asp-for="categoryName" class="form-control" />
         <br />
-        <button class="btn btn-primary">Create Category</button>
+        <button class="btn btn-warning">Update Category</button>
     </div>
 </form>

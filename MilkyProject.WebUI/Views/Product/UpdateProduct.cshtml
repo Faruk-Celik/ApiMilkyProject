@@ -1,0 +1,28 @@
+﻿@model MilkyProject.WebUI.Dtos.ProductDtos.UpdateProductDtos
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<form method="post">
+    <div class="container">
+        <label>Kategori Id</label>
+        <input type="text" asp-for="productId" readonly class="form-control" />
+        <br />
+        <label>Product Name</label>
+        <input type="text" asp-for="productName" class="form-control" />
+        <br />
+        <label>Old Price</label>
+        <input type="text" asp-for="oldPrice" class="form-control" />
+        <br />
+        <label>New Price</label>
+        <input type="text" asp-for="newPrice" class="form-control" />
+        <br />
+        <label>Product Status</label>
+        <input type="text" asp-for="status" class="form-control" />
+        <br />
+  
+        <button class="btn btn-warning">Update Product</button>
+    </div>
+</form>
