@@ -7,11 +7,11 @@ namespace MilkyProject.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductControllers : ControllerBase
     {
         private readonly IProductService _productService;
 
-        public ProductController ( IProductService productService )
+        public ProductControllers ( IProductService productService )
         {
             _productService = productService;
         }
@@ -45,6 +45,12 @@ namespace MilkyProject.WebApi.Controllers
         {
             var Values = _productService.TGetById(id);
             return Ok(Values);
+        }
+        [HttpGet("GetProductWithCategory")]
+        public IActionResult GetProductWithCategory ()
+        {
+            var values = _productService.TGetProductsWithCategory();
+            return Ok(values);
         }
     }
 }

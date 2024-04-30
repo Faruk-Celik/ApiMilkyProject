@@ -7,11 +7,11 @@ namespace MilkyProject.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoryControllers : ControllerBase
     {
         private readonly ICategoryService _categoryService;
 
-        public CategoryController ( ICategoryService categoryService )
+        public CategoryControllers ( ICategoryService categoryService )
         {
             _categoryService = categoryService;
         }

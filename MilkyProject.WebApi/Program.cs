@@ -3,10 +3,14 @@ using MilkyProject.BusinessLayer.Concrete;
 using MilkyProject.DataAccessLayer.Abstract;
 using MilkyProject.DataAccessLayer.Context;
 using MilkyProject.DataAccessLayer.EntityFramework;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllersWithViews()
+    .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.AddScoped<ICategoryService,CategoryManager>();    
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
